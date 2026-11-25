@@ -1,0 +1,2059 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MDS 骨髓增生異常症候群 — NCCN v1.2027 臨床速查手冊</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --primary: #0f5c6e;
+      --primary-light: #e0f4f7;
+      --accent: #0284c7;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+      --warn-bg: #fffbeb;
+      --warn-border: #f59e0b;
+      --warn-text: #92400e;
+      --ok-bg: #f0fdf4;
+      --ok-border: #22c55e;
+      --ok-text: #166534;
+      --info-bg: #eff6ff;
+      --info-border: #3b82f6;
+      --info-text: #1e40af;
+      --purple-bg: #f5f3ff;
+      --purple-border: #8b5cf6;
+      --purple-text: #5b21b6;
+      --badge-bg: #e2e8f0;
+      --badge-text: #334155;
+      --shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+      --radius: 12px;
+      --sidebar-w: 290px;
+      --topbar-h: 64px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-alt: #1e293b;
+      --border: #293548;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --primary: #2dd4bf;
+      --primary-light: #113842;
+      --accent: #38bdf8;
+      --danger-bg: #2c1215;
+      --danger-border: #f87171;
+      --danger-text: #fca5a5;
+      --warn-bg: #2b200a;
+      --warn-border: #fbbf24;
+      --warn-text: #fde68a;
+      --ok-bg: #0b2619;
+      --ok-border: #4ade80;
+      --ok-text: #86efac;
+      --info-bg: #0f213d;
+      --info-border: #60a5fa;
+      --info-text: #93c5fd;
+      --purple-bg: #211638;
+      --purple-border: #a78bfa;
+      --purple-text: #ddd6fe;
+      --badge-bg: #1e293b;
+      --badge-text: #cbd5e1;
+      --shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+    }
+
+    /* Topbar */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--topbar-h);
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 18px;
+      z-index: 100;
+      box-shadow: var(--shadow);
+    }
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 16.5px;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    .brand .ver {
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .portal-link {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      padding: 4px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: all .15s;
+    }
+    .portal-link:hover {
+      color: var(--primary);
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .search-wrap {
+      flex: 1;
+      max-width: 440px;
+      margin-left: auto;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 8px 34px 8px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .search-input:focus { border-color: var(--accent); }
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: none;
+      font-size: 15px;
+    }
+    .search-count {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .theme-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: var(--topbar-h);
+      left: 0;
+      bottom: 0;
+      width: var(--sidebar-w);
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      overflow-y: auto;
+      padding: 14px 12px 36px;
+      z-index: 90;
+      transition: transform .25s ease;
+    }
+    .nav-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin: 14px 10px 6px;
+    }
+    .nav-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 10px;
+      border-radius: 8px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13.5px;
+      margin-bottom: 2px;
+      transition: background .15s, color .15s;
+    }
+    .nav-link:hover, .nav-link.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .nav-code {
+      font-size: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 1px 6px;
+      border-radius: 6px;
+      flex-shrink: 0;
+    }
+
+    /* Main */
+    .main {
+      margin-left: var(--sidebar-w);
+      margin-top: var(--topbar-h);
+      padding: 26px 30px 80px;
+      max-width: 1160px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0f4c5c 0%, #0e7490 55%, #0284c7 100%);
+      color: #ffffff;
+      padding: 26px 28px;
+      border-radius: 16px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+    .hero h1 { margin: 0 0 8px; font-size: 24px; line-height: 1.3; }
+    .hero p { margin: 0; opacity: 0.93; font-size: 14px; }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.18);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Quick Jump Chips */
+    .quick-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .chip {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .chip:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    /* Sections */
+    section.card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: calc(var(--topbar-h) + 16px);
+    }
+    .sec-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+    .sec-header h2 {
+      margin: 0;
+      font-size: 20px;
+      color: var(--primary);
+    }
+    .sec-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .code-tag {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 3px 9px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    h3 {
+      font-size: 16px;
+      margin: 20px 0 10px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h4 {
+      font-size: 14.5px;
+      margin: 14px 0 6px;
+      color: var(--primary);
+    }
+    p { margin: 8px 0; }
+    ul, ol { margin: 6px 0 12px; padding-left: 22px; }
+    li { margin-bottom: 5px; }
+
+    /* Callouts */
+    .callout {
+      border-left: 4px solid var(--info-border);
+      background: var(--info-bg);
+      color: var(--info-text);
+      padding: 12px 15px;
+      border-radius: 0 10px 10px 0;
+      margin: 14px 0;
+      font-size: 14px;
+    }
+    .callout.danger {
+      border-color: var(--danger-border);
+      background: var(--danger-bg);
+      color: var(--danger-text);
+    }
+    .callout.warn {
+      border-color: var(--warn-border);
+      background: var(--warn-bg);
+      color: var(--warn-text);
+    }
+    .callout.ok {
+      border-color: var(--ok-border);
+      background: var(--ok-bg);
+      color: var(--ok-text);
+    }
+    .callout.purple {
+      border-color: var(--purple-border);
+      background: var(--purple-bg);
+      color: var(--purple-text);
+    }
+    .callout strong { font-weight: 700; }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 999px;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+    .b-cat1 { background: #dcfce7; color: #166534; }
+    .b-cat2b { background: #fef3c7; color: #92400e; }
+    .b-pref { background: #dbeafe; color: #1e40af; }
+    .b-new { background: #f3e8ff; color: #6b21a8; }
+    .b-warn { background: #fee2e2; color: #991b1b; }
+    [data-theme="dark"] .b-cat1 { background: #14532d; color: #86efac; }
+    [data-theme="dark"] .b-cat2b { background: #78350f; color: #fde68a; }
+    [data-theme="dark"] .b-pref { background: #1e3a8a; color: #93c5fd; }
+    [data-theme="dark"] .b-new { background: #4c1d95; color: #ddd6fe; }
+    [data-theme="dark"] .b-warn { background: #7f1d1d; color: #fca5a5; }
+
+    /* Grids */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 12px 0;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 12px 0;
+    }
+    .box {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .box h4 { margin-top: 0; }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      margin: 12px 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+    th, td {
+      padding: 9px 11px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--surface-alt);
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background: var(--surface-alt); }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+    }
+    .tab-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      font-weight: 600;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Flow steps */
+    .flow-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      gap: 10px;
+      margin: 12px 0;
+    }
+    .flow-step {
+      flex: 1 1 200px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--primary);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13.5px;
+    }
+    .flow-step .step-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* Calculator */
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin: 12px 0 16px;
+    }
+    .calc-field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--text);
+    }
+    .calc-field select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 13.5px;
+    }
+    .calc-result {
+      background: var(--primary-light);
+      border: 1px solid var(--primary);
+      border-radius: 12px;
+      padding: 16px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+    .calc-score-num {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+    .calc-details { font-size: 13.5px; flex: 1; min-width: 240px; }
+
+    /* Gene filter */
+    .filter-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .gene-search {
+      padding: 7px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      font-size: 13.5px;
+      min-width: 220px;
+    }
+    .filter-btn {
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      font-size: 12.5px;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    mark.hl {
+      background: #fde047;
+      color: #0f172a;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    /* Back to top */
+    #topBtn {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      padding: 10px 15px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: none;
+      box-shadow: var(--shadow);
+      z-index: 95;
+    }
+
+    .footer-note {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 960px) {
+      .menu-btn { display: inline-block; }
+      .portal-link { display: none; }
+      .sidebar {
+        transform: translateX(-100%);
+        box-shadow: var(--shadow);
+      }
+      .sidebar.open { transform: translateX(0); }
+      .main {
+        margin-left: 0;
+        padding: 20px 16px 70px;
+      }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Topbar -->
+  <header class="topbar">
+    <button class="menu-btn" id="menuBtn" aria-label="開啟目錄">☰</button>
+    <div class="brand">
+      <span>🩸 MDS 臨床速查手冊</span>
+      <span class="ver">NCCN v1.2027</span>
+    </div>
+    <a class="portal-link" href="https://lichiahans.github.io/hematology-portal/" target="_blank" rel="noopener">← 血液科入口網</a>
+    <div class="search-wrap">
+      <input type="text" id="searchInput" class="search-input" placeholder="全文搜尋：基因、藥物、劑量、VEXAS、IPSS-M..." aria-label="搜尋指引內容" />
+      <button class="search-clear" id="searchClear" aria-label="清除搜尋">✕</button>
+    </div>
+    <span class="search-count" id="searchCount"></span>
+    <button class="theme-btn" id="themeBtn" title="切換深淺模式">🌙 深色</button>
+  </header>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar" id="sidebar" aria-label="章節快速導覽">
+    <div class="nav-group-title">版本與核心診斷</div>
+    <a class="nav-link" href="#updates"><span>🆕 v1.2027 更新重點</span><span class="nav-code">UPDATES</span></a>
+    <a class="nav-link" href="#workup"><span>🔍 初始評估與進階檢查</span><span class="nav-code">MDS-1/3/G</span></a>
+    <a class="nav-link" href="#indolent"><span>🧬 惰性造血異常 (CHIP/CCUS)</span><span class="nav-code">MDS-2</span></a>
+    <a class="nav-link" href="#classification"><span>📋 WHO / ICC 分類與 MDS/MPN</span><span class="nav-code">MDS-B</span></a>
+
+    <div class="nav-group-title">風險分層與計算</div>
+    <a class="nav-link" href="#prognosis"><span>📊 IPSS / IPSS-R / IPSS-M 計算機</span><span class="nav-code">MDS-C</span></a>
+
+    <div class="nav-group-title">治療策略</div>
+    <a class="nav-link" href="#lower-risk"><span>🟢 低風險 MDS 治療策略</span><span class="nav-code">MDS-4~10</span></a>
+    <a class="nav-link" href="#higher-risk"><span>🔴 高風險 MDS 與移植</span><span class="nav-code">MDS-11~12</span></a>
+    <a class="nav-link" href="#dosing"><span>💊 常用藥物劑量與警語速查</span><span class="nav-code">DOSING</span></a>
+    <a class="nav-link" href="#supportive"><span>🛡️ 支持性療法與排鐵</span><span class="nav-code">MDS-13</span></a>
+
+    <div class="nav-group-title">療效、基因與遺傳</div>
+    <a class="nav-link" href="#response"><span>📈 療效評估標準 (IWG 2018/2023)</span><span class="nav-code">MDS-A</span></a>
+    <a class="nav-link" href="#somatic-genes"><span>🧪 常見體細胞突變基因表</span><span class="nav-code">MDS-D</span></a>
+    <a class="nav-link" href="#hereditary"><span>👪 遺傳易感症候群 (HMMPS)</span><span class="nav-code">MDS-E/F</span></a>
+    <a class="nav-link" href="#abbr"><span>📖 NCCN 等級與縮寫表</span><span class="nav-code">ABBR/CAT</span></a>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main" id="contentRoot">
+    <!-- Hero -->
+    <div class="hero">
+      <h1>骨髓增生異常症候群 (Myelodysplastic Syndromes, MDS)</h1>
+      <p>NCCN Clinical Practice Guidelines in Oncology — 繁體中文重點整理、治療流程與臨床速查系統</p>
+      <div class="hero-meta">
+        <span class="hero-pill">版本：Version 1.2027 (2026/11/17)</span>
+        <span class="hero-pill">涵蓋：MDS-1 ~ MDS-13、MDS-A ~ MDS-G</span>
+        <span class="hero-pill">內建：IPSS-R 互動計算機 &amp; 基因速查</span>
+      </div>
+    </div>
+
+    <!-- Quick Jump Chips -->
+    <div class="quick-bar">
+      <a class="chip" href="#updates">🆕 v1.2027 必看更新</a>
+      <a class="chip" href="#prognosis">🧮 IPSS-R 互動計算機</a>
+      <a class="chip" href="#lower-risk">🟢 低風險貧血分流</a>
+      <a class="chip" href="#lower-risk" onclick="openTab('lr-uba1')">🔥 VEXAS / UBA1 新章節</a>
+      <a class="chip" href="#higher-risk">🔴 高風險 HMA / Venetoclax / HCT</a>
+      <a class="chip" href="#dosing">💊 Luspatercept / Imetelstat 劑量</a>
+      <a class="chip" href="#supportive">🩸 輸血與排鐵</a>
+      <a class="chip" href="#response">📈 IWG 2023 標準</a>
+      <a class="chip" href="#somatic-genes">🧬 29 基因速查</a>
+    </div>
+
+    <!-- 1. UPDATES -->
+    <section class="card" id="updates">
+      <div class="sec-header">
+        <h2>1. Version 1.2027 重大更新重點</h2>
+        <div class="sec-tags"><span class="code-tag">UPDATES</span><span class="code-tag">2026-11-17</span></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="box">
+          <h4>🔬 診斷與分子檢測 (MDS-1, MDS-3)</h4>
+          <ul>
+            <li><strong>NGS 正式列為醫療必要檢查</strong> <span class="badge b-new">NEW</span>：疑似 MDS 時，綜合性髓系 NGS panel（通常 &gt;50 基因，須涵蓋 MDS-D 所有常見突變）屬<strong>醫療必要 (medically necessary)</strong>，非選擇性檢查；若骨髓抽吸困難，鼓勵以周邊血檢驗。</li>
+            <li><strong>腹部超音波</strong>：血小板低下者初始評估新增腹部超音波。</li>
+            <li><strong>MDS-3 新增路徑</strong>：納入「伴隨自體免疫現象的 MDS 與 MDS/MPN (MDS-5)」。</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>📊 預後分層更新 (MDS-4, MDS-C)</h4>
+          <ul>
+            <li><strong>正式並列 IPSS-R 與 IPSS-M</strong>：移除 WPSS 頁面與舊版對 IPSS-M 需進一步驗證的保留註腳。</li>
+            <li><strong>低/高風險切點明確化</strong>：
+              <br>• <strong>低風險 (Lower-Risk)</strong>：IPSS-R <strong>≤3.5</strong> 或 IPSS-M <strong>&lt;0</strong>
+              <br>• <strong>高風險 (Higher-Risk)</strong>：IPSS-R <strong>&gt;3.5</strong> 或 IPSS-M <strong>&gt;0</strong>
+            </li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>🟢 低風險 MDS 與 VEXAS 新增 (MDS-5 ~ MDS-10)</h4>
+          <ul>
+            <li><strong>貧血依亞型獨立分頁</strong>：MDS-5q (MDS-6)、MDS-SF3B1 (MDS-7)、<strong>新增 MDS-UBA1 / VEXAS (MDS-8)</strong> <span class="badge b-new">NEW</span>、No del(5q) RS &lt;15% (MDS-9/10)。</li>
+            <li><strong>Luspatercept 劑量微調細則</strong>：明確區分 ESA-naïve 與 ESA-refractory 升階條件，並新增可考慮併用 ESA。</li>
+            <li><strong>低劑量 HMA</strong>：低風險 MDS 可考慮 Azacitidine × 5 天或 Decitabine × 3 天。</li>
+            <li><strong>MDS-SF3B1</strong>：若 sEPO ≤200 mU/mL，可考慮 Epoetin alfa 或 Darbepoetin alfa。</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>🔴 高風險、支持療法與 MDS/MPN (MDS-12, 13, A, B, E/F)</h4>
+          <ul>
+            <li><strong>Venetoclax 重要警語</strong> <span class="badge b-warn">警語</span>：高風險 MDS 但 <strong>blasts &lt;5% 者不應使用 Venetoclax</strong>。</li>
+            <li><strong>高強度化療舉例</strong>：明確列入 <strong>CPX-351</strong>（雙藥微脂體 Cytarabine + Daunorubicin）。</li>
+            <li><strong>新增療效評估專章 (MDS-A)</strong> <span class="badge b-new">NEW</span>：納入 IWG 2018 血液學反應與 IWG 2023 高風險 MDS 療效標準。</li>
+            <li><strong>MDS/MPN 更新</strong>：增生型 CMML 切點由 WBC &gt;12K 改為 <strong>&gt;13K/mm³</strong>；CMML-1 新增 JAK2 及 IDH1/2 抑制劑；提醒鑑別 <strong>RALD</strong>（孤立 RAS 突變伴單核球增多）。</li>
+            <li><strong>遺傳易感性</strong>：生殖系 DNA 新增<strong>毛囊球 (Hair root bulbs)</strong> 採檢來源；強調 <em>DDX41</em> 與短端粒症候群為成人發病為主（短端粒終生 MDS/AML 風險 10–20%，&gt;50歲最高）。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. INITIAL WORKUP -->
+    <section class="card" id="workup">
+      <div class="sec-header">
+        <h2>2. 初始評估、進階檢查與流式細胞儀</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-1</span><span class="code-tag">MDS-3</span><span class="code-tag">MDS-G</span></div>
+      </div>
+
+      <h3>必做初始檢查清單 (MDS-1)</h3>
+      <div class="grid-2">
+        <div class="box">
+          <h4>血液與骨髓評估</h4>
+          <ul>
+            <li>詳細病史與理學檢查（含輸血史、藥物/毒素暴露、化放療史）。</li>
+            <li><strong>CBC、白血球分類 (DC)、網狀紅血球 (Reticulocyte)</strong> 與<strong>周邊血抹片</strong>（評估形態發育異常）。</li>
+            <li><strong>骨髓抽吸（含鐵染色 Prussian blue）＋骨髓切片（建議加做 Reticulin 網狀纖維染色）</strong>。</li>
+            <li><strong>傳統染色體核型分析 (Karyotype)</strong>：需至少 <strong>≥20 個分裂中期 (metaphases)</strong>。若無法取得或核型正常，應考慮 <strong>CMA / CGAT</strong> 或 MDS FISH panel（至少包含 -7/del(7q), -5/del(5q), i(17q)/t(17p), +8；另可檢 <em>TP53</em>）。</li>
+            <li><strong>體細胞突變 NGS Panel (&gt;50 基因)</strong>：醫療必要項目，涵蓋 MDS 與 MDS/MPN 相關基因（MDS-D）。若骨髓難抽，鼓勵用周邊血檢驗。</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>生化、排除次發原因與影像</h4>
+          <ul>
+            <li><strong>輸血前血清紅血球生成素 (sEPO)</strong>：決定低風險貧血治療路徑之關鍵。</li>
+            <li><strong>RBC Folate（優於血清葉酸）</strong>與 <strong>Vitamin B12（須加測血清 MMA）</strong>。</li>
+            <li><strong>鐵質代謝</strong>：Serum Ferritin、Iron、TIBC。</li>
+            <li><strong>TSH</strong>（排除甲狀腺異常）與 <strong>LDH</strong>（預後指標，≥320 U/L 預後較差）。</li>
+            <li><strong>腹部超音波</strong>：血小板低下患者建議執行（評估脾腫大/肝病）。</li>
+            <li><strong>特定情境鑑別</strong>：
+              <br>• <strong>銅缺乏 (Copper / Ceruloplasmin)</strong>：GI 吸收不良、胃繞道手術、嚴重營養不良、補充鋅劑或合併神經病變者（骨髓可見前驅細胞空泡化）。
+              <br>• <strong>HIV 篩檢</strong>（臨床懷疑時）。
+              <br>• <strong>先天性鐵粒幼細胞貧血 (CSA)</strong>：&lt;40 歲者須鑑別，部分對 B6/B1 有效，非 MDS。
+              <br>• <strong>遺傳易感篩檢 (HMMPS)</strong>：特別是 <strong>&lt;50 歲</strong>或有家族史者（見 MDS-E/F）。
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout danger">
+        <strong>⚠️ AML 定義性異常警訊（MDS-1A, MDS-B 4/6）：</strong>
+        若檢出 <strong>t(8;21)、t(15;17)、inv(16)/t(16;16)</strong>，或 WHO 2022 / ICC 定義之 AML 基因異常（如 <em>NPM1</em> 突變、<em>KMT2A</em> 重排、<em>MECOM</em> 重排、<em>DEK::NUP214</em>、<em>NUP98</em> 重排等），<strong>即使骨髓芽細胞 &lt;20% 仍診斷為 AML</strong>，應依 NCCN AML 指引治療！
+      </div>
+
+      <h3>確診後進階檢查 (MDS-3) 與流式細胞儀原則 (MDS-G)</h3>
+      <ul>
+        <li><strong>流式細胞儀 (FCM)</strong>：可輔助診斷（尤其形態不明確且核型正常者）並排除血球母細胞偽象（如 hematogones），建議抗體組合含 CD45/CD34/CD33/CD19。
+          <br><strong>⚠️ 重要原則</strong>：診斷與風險分層的 <strong>blast % 必須由形態學（骨髓抽吸抹片為佳）決定，不可單以 FCM 取代</strong>。FCM 對紅血球系發育異常敏感度有限，且無法評估巨核球發育異常。</li>
+        <li><strong>LGL 與 PNH 篩檢</strong>：懷疑免疫相關骨髓衰竭或考慮 IST 時，檢驗 <strong>FCM + TCR PCR + <em>STAT3</em> 突變</strong>（評估 T-LGL）及 <strong>FLAER + ≥1 GPI 錨定蛋白</strong>（評估 PNH clone；約 20% MDS 可有微量 PNH clone 但通常無溶血）。</li>
+        <li><strong>移植準備</strong>：潛在 HCT 候選人應執行高解析度等位基因 <strong>HLA 分型 (HLA-A, -B, -C, -DR, -DQ)</strong>；CMV 陰性者盡量使用 <strong>CMV-safe（CMV 陰性或減白）血品</strong>。</li>
+        <li><strong>CMML 合併嗜酸性球增多</strong>：檢驗 <strong>5q32 <em>PDGFRβ</em> 重排</strong>（對 Imatinib 極度敏感）。</li>
+      </ul>
+    </section>
+
+    <!-- 3. INDOLENT DISORDERS -->
+    <section class="card" id="indolent">
+      <div class="sec-header">
+        <h2>3. 惰性骨髓造血異常光譜 (CHIP / ICUS / CCUS)</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-2</span></div>
+      </div>
+      <p>若初始評估未達 MDS 診斷標準（無顯著形態發育異常），依是否有血球低下 (Cytopenia) 與選殖性 (Clonality) 分類如下：</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>項目</th>
+              <th>CHIP<br><small>未明意義選殖性造血</small></th>
+              <th>ICUS<br><small>未明意義特發性血球低下</small></th>
+              <th>Lower-Risk CCUS<br><small>低風險選殖性血球低下</small></th>
+              <th>High-Risk CCUS<br><small>高風險選殖性血球低下</small></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>血球低下 (Cytopenia)</strong></td><td>−</td><td>＋</td><td>＋</td><td>＋</td></tr>
+            <tr><td><strong>發育異常 (Dysplasia)</strong></td><td>−</td><td>−</td><td>−</td><td>−</td></tr>
+            <tr><td><strong>選殖性 (Clonality)*</strong></td><td>＋</td><td>−</td><td>＋</td><td>＋</td></tr>
+            <tr><td><strong>惡化為骨髓腫瘤風險</strong></td><td>＋</td><td>＋/−</td><td>＋＋</td><td>＋＋＋</td></tr>
+            <tr>
+              <td><strong>臨床處置與追蹤</strong></td>
+              <td>觀察；依臨床變化追蹤</td>
+              <td>觀察；每年追蹤</td>
+              <td>觀察；每年追蹤</td>
+              <td>觀察；<strong>每年 2–4 次 CBC</strong>；可考慮臨床試驗</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">
+        <strong>*選殖性定義與風險預測重點：</strong>
+        <ul style="margin:6px 0 0;">
+          <li><strong>選殖性條件</strong>：≥2 個分裂中期有染色體異常，<strong>或</strong>體細胞突變 <strong>VAF &gt;2%</strong>（常見基因：<em>DNMT3A, TET2, ASXL1, RUNX1, JAK2, PPM1D, TP53</em> 及剪接體基因）。</li>
+          <li><strong>高惡化預測因子</strong>：致病突變 <strong>VAF &gt;10% 且 ≥2 個體細胞突變</strong>、剪接體基因突變、或 <em>RUNX1 / JAK2</em> 突變。孤立性 <em>DNMT3A / TET2 / ASXL1</em> 預測價值較低。</li>
+          <li><strong>CHRS 風險評分</strong>（<a href="http://www.chrsapp.com" target="_blank" rel="noopener">chrsapp.com</a>）：低風險 (≤9.5)、中風險 (10–12)、高風險 (≥12.5)，相較無突變者惡化為骨髓腫瘤風險分別增加 <strong>3 倍、37 倍、348 倍</strong>。</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4. CLASSIFICATION & MDS/MPN -->
+    <section class="card" id="classification">
+      <div class="sec-header">
+        <h2>4. 病理分類系統 (WHO 2022 / ICC 2022) 與 MDS/MPN 重疊腫瘤</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-B 1~4</span></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="cls-mds">MDS 分類對照 (WHO vs ICC)</button>
+        <button class="tab-btn" data-tab="cls-mdsmpn">MDS/MPN 重疊腫瘤分類與治療</button>
+        <button class="tab-btn" data-tab="cls-cyto">AML 定義異常 &amp; MDS 常見染色體</button>
+      </div>
+
+      <div class="tab-panel active" id="cls-mds">
+        <p>診斷前提：造血細胞任一系 ≥10% 發育異常 (dysplasia) 伴慢性血球低下（通常持續 ≥2–4 個月，排除藥物/毒素/共病）。<em>註：單憑分類不直接決定治療選擇，須結合預後評分。</em></p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>WHO 2016</th>
+                <th>WHO 2022 (第 5 版)</th>
+                <th>ICC 2022</th>
+                <th>骨髓 Blasts</th>
+                <th>關鍵定義與註記</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td colspan="5" style="background:var(--primary-light);font-weight:700;color:var(--primary);">基因定義型 MDS (MDS, genetically defined)</td></tr>
+              <tr>
+                <td>MDS-del(5q)</td>
+                <td><strong>MDS-5q</strong></td>
+                <td><strong>MDS-del(5q)</strong></td>
+                <td>&lt;5%</td>
+                <td>單獨 del(5q) 或合併最多 1 個其他異常（<strong>不含第 7 染色體</strong>）。</td>
+              </tr>
+              <tr>
+                <td>MDS-RS</td>
+                <td><strong>MDS-<em>SF3B1</em></strong></td>
+                <td><strong>MDS-<em>SF3B1</em></strong></td>
+                <td>&lt;5%</td>
+                <td>無 del(5q)、multi-<em>TP53</em>、-7/del(7q)、abn(3q) 或複雜核型（ICC 另須無 <em>RUNX1</em>）；無分子檢測時以 RS ≥15% 替代。</td>
+              </tr>
+              <tr>
+                <td>—</td>
+                <td><strong>MDS-bi<em>TP53</em></strong></td>
+                <td><strong>Myeloid neoplasms with m<em>TP53</em></strong></td>
+                <td>&lt;20%</td>
+                <td>WHO 雙對偶基因：VAF ≥50%、&gt;1 個突變或 <em>TP53</em> 缺失/LOH；ICC 另含單一 <em>TP53</em> 合併複雜核型。</td>
+              </tr>
+              <tr><td colspan="5" style="background:var(--primary-light);font-weight:700;color:var(--primary);">形態定義型 MDS (MDS, morphologically defined)</td></tr>
+              <tr>
+                <td>MDS-SLD / MLD</td>
+                <td><strong>MDS-LB</strong> (low blasts)</td>
+                <td><strong>MDS-NOS</strong></td>
+                <td>&lt;5%</td>
+                <td>低芽細胞型（ICC 亦包含合併 -7/del(7q) 或複雜核型者）。</td>
+              </tr>
+              <tr>
+                <td>—</td>
+                <td><strong>MDS-hypoplastic</strong></td>
+                <td>—</td>
+                <td>&lt;5%</td>
+                <td>年齡校正後骨髓細胞密度 ≤25%。</td>
+              </tr>
+              <tr>
+                <td>MDS-EB1</td>
+                <td><strong>MDS-IB1</strong></td>
+                <td><strong>MDS-EB</strong></td>
+                <td>5%–9%</td>
+                <td>芽細胞增加第 1 型。</td>
+              </tr>
+              <tr>
+                <td>MDS-EB2</td>
+                <td><strong>MDS-IB2</strong></td>
+                <td><strong>MDS/AML</strong></td>
+                <td>10%–19%</td>
+                <td>部分高風險 MDS-IB2 或 ICC MDS/AML（特別是年輕病人）可考慮 AML 類型療法。</td>
+              </tr>
+              <tr>
+                <td>—</td>
+                <td><strong>MDS with fibrosis</strong></td>
+                <td>—</td>
+                <td>5%–19%</td>
+                <td>合併明顯骨髓網狀纖維化，預後較差。</td>
+              </tr>
+              <tr>
+                <td>AML</td>
+                <td><strong>AML</strong></td>
+                <td><strong>AML</strong></td>
+                <td>≥20%</td>
+                <td>或具 AML 定義性基因異常（不論 blast %）。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="cls-mdsmpn">
+        <div class="callout warn">
+          <strong>MDS/MPN 臨床核心原則 (MDS-B 2/6)：</strong>
+          CMML 預後系統包括 <strong>IPSS-M</strong> 與 <strong>CPSS-mol</strong>；增生型 CMML (<strong>WBC &gt;13,000/mm³</strong>) 預後較差，<strong><em>ASXL1</em></strong> 為一致的不良預後突變。
+          <br>• <strong>SM-AHN</strong>：CMML 可合併系統性肥大細胞增多症（<em>KIT</em> D816V），<strong>NGS 敏感度低，須用高敏感度等位基因特異性 PCR</strong>，對 Avapritinib (FDA 核准) / Midostaurin 有效。
+          <br>• <strong>BPDCN</strong>：10–20% 伴隨或演變為 CMML/MDS/AML，Tagraxofusp 為有效治療。
+          <br>• <strong>RALD 鑑別</strong> <span class="badge b-new">v1.2027</span>：持續單核球增多若僅見孤立性致癌熱點 <em>KRAS / NRAS</em> 突變，須考量 <strong>RALD</strong>（RAS 相關自體免疫淋巴增生症），病程與治療與 CMML 截然不同。
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>疾病實體 (WHO 2022 / ICC)</th>
+                <th>診斷特徵</th>
+                <th>常見突變</th>
+                <th>NCCN 建議治療</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CMML</strong><br><small>WHO: CMML-1 (&lt;10%), CMML-2 (10–&lt;20%)<br>ICC: CMML-MD (WBC ≤13K), CMML-MP (&gt;13K)</small></td>
+                <td>AMC ≥0.5×10⁹/L、單核球 ≥10%、具選殖性（排除 <em>PDGFRA/B, FGFR1, PCM1::JAK2</em> 融合）</td>
+                <td><em>TET2, SRSF2, ASXL1, RUNX1, NRAS, CBL</em> (80–90% 含 <em>SRSF2/TET2/ASXL1</em>)</td>
+                <td>
+                  • <strong>CMML-1</strong>：HMA (含 DEC-C) 或 Hydroxyurea 或 <strong>JAK2i</strong> (Ruxolitinib, Fedratinib) 或 <strong>IDH1/2i</strong>。<br>
+                  • <strong>CMML-2</strong>：<strong>HMA ± Venetoclax</strong>（非移植者須慎防血球低下）及/或 <strong>Allo-HCT</strong>；Ruxolitinib 可併用 HMA 緩解症狀/脾腫大。<br>
+                  • 若 t(5;12) <em>ETV6::PDGFRβ</em> → <strong>Imatinib</strong>。
+                </td>
+              </tr>
+              <tr>
+                <td><strong>MDS/MPN with neutrophilia</strong><br><small>(ICC: aCML, <em>BCR::ABL1</em> 陰性)</small></td>
+                <td>WBC ≥13K、顆粒球發育異常、前驅顆粒球 ≥10%、嗜酸性球 &lt;10%</td>
+                <td><em>SETBP1, ETNK1</em> (± <em>ASXL1</em>)；少數 <em>CSF3R / JAK2</em></td>
+                <td>HMA 及/或 <strong>Ruxolitinib</strong>（尤其 <em>CSF3R / JAK2</em> 突變）及/或 <strong>Allo-HCT</strong>（唯一可達長期緩解）。</td>
+              </tr>
+              <tr>
+                <td><strong>MDS/MPN with m<em>SF3B1</em> &amp; thrombocytosis</strong><br><small>(舊稱 MDS/MPN-RS-T)</small></td>
+                <td>血小板 ≥450K、RS ≥15% 或 <em>SF3B1</em> (VAF &gt;10%)</td>
+                <td><em>SF3B1</em> (60%), <em>JAK2</em> V617F (50%), <em>MPL, CALR</em></td>
+                <td>HMA 及/或 <strong>Lenalidomide</strong>，或 <strong>Luspatercept-aamt</strong>（治療貧血）；Hydroxyurea 控制血小板過高。</td>
+              </tr>
+              <tr>
+                <td><strong>MDS/MPN-NOS</strong> (舊稱 MDS/MPN-U)</td>
+                <td>PLT ≥450K 或 WBC ≥13K，不符其他亞型</td>
+                <td><em>TET2, NRAS, RUNX1, CBL, SETBP1, ASXL1</em></td>
+                <td>HMA 及/或 <strong>Allo-HCT</strong>。</td>
+              </tr>
+              <tr>
+                <td><strong>MDS/MPN with i(17q)</strong> (ICC 暫定)</td>
+                <td>WBC ≥13K、顆粒球發育異常</td>
+                <td><em>SETBP1, SRSF2</em></td>
+                <td><strong>Allo-HCT</strong>。</td>
+              </tr>
+              <tr>
+                <td><strong>JMML</strong> (WHO 2022 歸入 MPN)</td>
+                <td>兒童/生殖系變異；&gt;90% RAS 路徑活化</td>
+                <td><em>PTPN11, NF1, N/KRAS, CBL, SETBP1, JAK3</em></td>
+                <td><strong>Allo-HCT</strong>。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="cls-cyto">
+        <div class="grid-2">
+          <div class="box">
+            <h4>🚨 AML 定義性基因異常 (WHO 2022 &amp; ICC)</h4>
+            <ul>
+              <li><code>t(8;21)(q22;q22.1) / RUNX1::RUNX1T1</code></li>
+              <li><code>inv(16)(p13.1q22)</code> 或 <code>t(16;16) / CBFB::MYH11</code></li>
+              <li><code>t(15;17)(q24.1;q21.2) / PML::RARA</code> 及其他 <em>RARA</em> 重排 (APL)</li>
+              <li><code>t(9;11) / MLLT3::KMT2A</code> 及其他 <em>KMT2A</em> 重排</li>
+              <li><code>t(6;9) / DEK::NUP214</code></li>
+              <li><code>inv(3) / t(3;3) / GATA2; MECOM(EVI1)</code> 及其他 <em>MECOM</em> 重排</li>
+              <li><code>Mutated NPM1</code></li>
+              <li><code>CEBPA</code> (WHO) / in-frame bZIP <em>CEBPA</em> (ICC)</li>
+              <li><code>RBM15::MRTFA</code>、<code>NUP98</code> 重排</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>🧬 MDS 常見染色體異常 (*為 FISH 最低必查項目)</h4>
+            <p><strong>不平衡異常 (Unbalanced)</strong>：</p>
+            <ul>
+              <li><strong>−7 或 del(7q)*</strong>、<strong>−5 或 del(5q)*</strong>、<strong>i(17q) 或 t(17p)*</strong>、<strong>+8*</strong>（另可查 <em>TP53</em> FISH）</li>
+              <li>−13 或 del(13q)、del(11q)、del(12p)/t(12p)、del(9q)、idic(X)(q13)、del(20q)、−Y</li>
+            </ul>
+            <p><strong>平衡異常 (Balanced)</strong>：</p>
+            <ul>
+              <li>t(11;16)、t(3;21)、t(1;3)、t(2;11)、inv(3)、t(6;9)</li>
+            </ul>
+            <p style="font-size:12.5px;color:var(--text-muted);">註：若無形態發育異常，單獨 -13/del(13q)、del(9q) 等不再視為假定性 MDS，改比照 CHIP 處理。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. PROGNOSIS & CALCULATOR -->
+    <section class="card" id="prognosis">
+      <div class="sec-header">
+        <h2>5. 預後評分系統與 IPSS-R 互動計算機</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-C 1~3</span></div>
+      </div>
+
+      <div class="callout ok">
+        <strong>🎯 臨床風險二分法（決定低風險 vs 高風險治療策略）：</strong><br>
+        • <strong>低風險 (Lower-Risk)</strong>：IPSS-R <strong>≤3.5 分</strong> 或 IPSS-M <strong>&lt;0</strong> → 走 <a href="#lower-risk">MDS-4 ~ MDS-10</a>（目標：改善血球與生活品質）。<br>
+        • <strong>高風險 (Higher-Risk)</strong>：IPSS-R <strong>&gt;3.5 分</strong> 或 IPSS-M <strong>&gt;0</strong> → 走 <a href="#higher-risk">MDS-11 ~ MDS-12</a>（目標：改變病程、延緩轉化 AML、延長存活）。
+      </div>
+
+      <h3>🧮 互動式 IPSS-R 快速計算機</h3>
+      <div class="box">
+        <div class="calc-grid">
+          <div class="calc-field">
+            <label for="calcCyto">染色體核型 (Cytogenetics)</label>
+            <select id="calcCyto">
+              <option value="0">極佳 (0分)：-Y, del(11q)</option>
+              <option value="1" selected>良好 (1分)：正常, del(5q), del(12p), del(20q), 雙異常含del(5q)</option>
+              <option value="2">中等 (2分)：del(7q), +8, +19, i(17q), 其他單/雙獨立株</option>
+              <option value="3">不良 (3分)：-7, inv(3)/t(3q)/del(3q), 雙異常含-7/del(7q), 複雜3項</option>
+              <option value="4">極不良 (4分)：複雜核型 &gt;3 項異常</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="calcBlast">骨髓芽細胞 (Marrow Blasts)</label>
+            <select id="calcBlast">
+              <option value="0" selected>≤ 2% (0分)</option>
+              <option value="1">&gt;2% – &lt;5% (1分)</option>
+              <option value="2">5% – 10% (2分)</option>
+              <option value="3">&gt; 10% (3分)</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="calcHb">血紅素 Hemoglobin (g/dL)</label>
+            <select id="calcHb">
+              <option value="0">≥ 10 (0分)</option>
+              <option value="1" selected>8 – &lt;10 (1分)</option>
+              <option value="1.5">&lt; 8 (1.5分)</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="calcPlt">血小板 Platelets (×10⁹/L)</label>
+            <select id="calcPlt">
+              <option value="0" selected>≥ 100 (0分)</option>
+              <option value="0.5">50 – &lt;100 (0.5分)</option>
+              <option value="1">&lt; 50 (1分)</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label for="calcAnc">嗜中性球 ANC (×10⁹/L)</label>
+            <select id="calcAnc">
+              <option value="0" selected>≥ 0.8 (0分)</option>
+              <option value="0.5">&lt; 0.8 (0.5分)</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-result" id="calcResult">
+          <div>
+            <div style="font-size:12px;color:var(--text-muted);font-weight:600;">IPSS-R 總分</div>
+            <div class="calc-score-num" id="calcScoreNum">2.0</div>
+          </div>
+          <div class="calc-details" id="calcDetails"></div>
+        </div>
+      </div>
+
+      <h3>IPSS-R 與 IPSS 預後對照表 (MDS-C 1/3)</h3>
+      <div class="grid-2">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>IPSS-R 分層 (%比例)</th><th>總分</th><th>中位 OS (年)</th><th>25% AML 轉化 (年)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Very Low</strong> (19%)</td><td>≤ 1.5</td><td>8.8</td><td>未達到 (NR)</td></tr>
+              <tr><td><strong>Low</strong> (38%)</td><td>&gt;1.5 – ≤3.0</td><td>5.3</td><td>10.8</td></tr>
+              <tr><td><strong>Intermediate</strong> (20%)</td><td>&gt;3.0 – ≤4.5</td><td>3.0</td><td>3.2</td></tr>
+              <tr><td><strong>High</strong> (13%)</td><td>&gt;4.5 – ≤6.0</td><td>1.6</td><td>1.4</td></tr>
+              <tr><td><strong>Very High</strong> (10%)</td><td>&gt; 6.0</td><td>0.8</td><td>0.7</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>IPSS 分層 (%比例)</th><th>總分</th><th>中位 OS (年)</th><th>25% AML 轉化 (年)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Low</strong> (33%)</td><td>0</td><td>5.7</td><td>9.4</td></tr>
+              <tr><td><strong>Int-1</strong> (38%)</td><td>0.5 – 1.0</td><td>3.5</td><td>3.3</td></tr>
+              <tr><td><strong>Int-2</strong> (22%)</td><td>1.5 – 2.0</td><td>1.1</td><td>1.1</td></tr>
+              <tr><td><strong>High</strong> (7%)</td><td>≥ 2.5</td><td>0.4</td><td>0.2</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3>IPSS-M 分子國際預後評分系統 (MDS-C 2~3/3)</h3>
+      <p>整合血球數、芽細胞、IPSS-R 核型、<strong>16 個主效基因</strong>與 <strong>15 個殘餘基因</strong>，提供更精準的個體化預後與標靶治療參考。官方線上計算機：<a href="https://mds-risk-model.com" target="_blank" rel="noopener">https://mds-risk-model.com</a></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>IPSS-M 分層</th>
+              <th>Very Low (VL)</th>
+              <th>Low (L)</th>
+              <th>Moderate Low (ML)</th>
+              <th>Moderate High (MH)</th>
+              <th>High (H)</th>
+              <th>Very High (VH)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>分數切點</strong></td><td>≤ −1.5</td><td>&gt;−1.5 ~ −0.5</td><td>&gt;−0.5 ~ 0</td><td>&gt;0 ~ 0.5</td><td>&gt;0.5 ~ 1.5</td><td>&gt; 1.5</td></tr>
+            <tr><td><strong>風險歸屬</strong></td><td colspan="3" style="text-align:center;color:var(--ok-text);font-weight:700;">低風險 Lower-Risk (&lt;0)</td><td colspan="3" style="text-align:center;color:var(--danger-text);font-weight:700;">高風險 Higher-Risk (&gt;0)</td></tr>
+            <tr><td><strong>HR (95% CI)</strong></td><td>0.51</td><td>1.0 (ref)</td><td>1.5</td><td>2.5</td><td>3.7</td><td>7.1</td></tr>
+            <tr><td><strong>中位 LFS (年)</strong></td><td>9.7</td><td>5.9</td><td>4.5</td><td>2.3</td><td>1.5</td><td>0.76</td></tr>
+            <tr><td><strong>中位 OS (年)</strong></td><td>10.6</td><td>6.0</td><td>4.6</td><td>2.8</td><td>1.7</td><td>1.0</td></tr>
+            <tr><td><strong>4 年 AML 轉化率</strong></td><td>2.8%</td><td>5.1%</td><td>11.4%</td><td>18.9%</td><td>29.2%</td><td>42.8%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-2">
+        <div class="box">
+          <h4>主效基因 Main Effect Genes (n = 16，依統計權重排序)</h4>
+          <p style="font-size:13.5px;"><code>TP53<sup>multi</sup></code>, <code>MLL<sup>PTD</sup></code>, <code>FLT3</code>, <code>SF3B1<sup>5q</sup></code>, <code>NPM1</code>, <code>RUNX1</code>, <code>NRAS</code>, <code>ETV6</code>, <code>IDH2</code>, <code>CBL</code>, <code>EZH2</code>, <code>U2AF1</code>, <code>SRSF2</code>, <code>DNMT3A</code>, <code>ASXL1</code>, <code>KRAS</code>, <code>SF3B1<sup>α</sup></code></p>
+          <p style="font-size:12px;color:var(--text-muted);">• <em>SF3B1<sup>α</sup></em>：無 <em>BCOR, BCORL1, RUNX1, NRAS, STAG2, SRSF2</em> 共突變或 del(5q)（預後佳）。</p>
+        </div>
+        <div class="box">
+          <h4>殘餘基因 Residual Genes (n = 15)</h4>
+          <p style="font-size:13.5px;"><code>BCOR</code>, <code>BCORL1</code>, <code>CEBPA</code>, <code>ETNK1</code>, <code>GATA2</code>, <code>GNB1</code>, <code>IDH1</code>, <code>NF1</code>, <code>PHF6</code>, <code>PPM1D</code>, <code>PRPF8</code>, <code>PTPN11</code>, <code>SETBP1</code>, <code>STAG2</code>, <code>WT1</code></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. LOWER-RISK MDS -->
+    <section class="card" id="lower-risk">
+      <div class="sec-header">
+        <h2>6. 低風險 MDS 治療策略 (IPSS-R ≤3.5 或 IPSS-M &lt;0)</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-4 ~ MDS-10</span></div>
+      </div>
+
+      <p>所有臨床顯著血球低下病人皆須給予<strong>支持性療法 (MDS-13)</strong>。若低風險治療無效或惡化，應重新評估骨髓與分子檢測，並轉入<strong>高風險治療策略 (MDS-11/12)</strong>。</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="lr-cyto">血小板/嗜中性球低下 (MDS-4)</button>
+        <button class="tab-btn" data-tab="lr-5q">貧血：MDS-5q (MDS-6)</button>
+        <button class="tab-btn" data-tab="lr-sf3b1">貧血：MDS-SF3B1 (MDS-7)</button>
+        <button class="tab-btn" data-tab="lr-uba1">貧血：UBA1 / VEXAS (MDS-8) 🆕</button>
+        <button class="tab-btn" data-tab="lr-epo-low">貧血：無5q, RS&lt;15%, EPO≤500 (MDS-9)</button>
+        <button class="tab-btn" data-tab="lr-epo-high">貧血：無5q, RS&lt;15%, EPO&gt;500 (MDS-10)</button>
+      </div>
+
+      <!-- Tab 1: Thrombocytopenia / Neutropenia -->
+      <div class="tab-panel active" id="lr-cyto">
+        <h4>臨床顯著血小板低下或嗜中性球低下（非以貧血為主）— MDS-4</h4>
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-label">一線治療</div>
+            <ul>
+              <li>臨床試驗</li>
+              <li><strong>Azacitidine</strong>（低劑量可考慮 5 天）</li>
+              <li><strong>Decitabine</strong>（低劑量可考慮 3 天）</li>
+              <li><strong>DEC-C</strong>（口服 Decitabine/Cedazuridine，IPSS Int-1 以上）</li>
+              <li><em>特定情況</em>：<strong>IST (馬源 ATG ± Cyclosporin A) ± Eltrombopag</strong>（限適合 IST 條件者：≤60歲且 blasts ≤5%、低細胞骨髓、PNH+、或 <em>STAT3</em> 突變 T 細胞株）。嚴重血小板低下亦可單獨考慮 Eltrombopag / Romiplostim。</li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">無效 (3–6月) / 惡化 / 復發</div>
+            <p>重新骨髓與分子檢測：</p>
+            <ul>
+              <li>若尚未用過 → 考慮 <strong>HMA</strong>（嚴重血小板低下可考慮 Eltrombopag / Romiplostim）</li>
+              <li>若 <strong>m<em>IDH1</em></strong> → <strong>Ivosidenib</strong></li>
+              <li>若 <strong>m<em>IDH2</em></strong> → <strong>Enasidenib</strong></li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">後線選擇</div>
+            <ul>
+              <li>m<em>IDH1</em> → Ivosidenib（若未用過）</li>
+              <li>m<em>IDH2</em> → Enasidenib（若未用過）</li>
+              <li>無 m<em>IDH</em> → <strong>臨床試驗</strong> 或 <strong>精選病人考慮 Allo-HCT</strong>（嚴重血球低下之 IPSS Int-1 / IPSS-R Int）。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: MDS-5q -->
+      <div class="tab-panel" id="lr-5q">
+        <h4>MDS-5q (Low Blasts)：del(5q) ± 最多 1 個其他染色體異常（不含第 7 染色體）— MDS-6</h4>
+        <div class="callout warn">
+          <strong>⚠️ 重要排除與警語：</strong>合併 <strong>Monosomy 7 / del(7q)</strong> 者不可歸入此路徑，應改以<strong>高風險 MDS</strong> 處置！此外，Lenalidomide 可能促使 <strong><em>TP53</em> 突變株選擇性擴增</strong>，須密切監測。
+        </div>
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-label">sEPO ≤ 500 mU/mL</div>
+            <ul>
+              <li><strong>首選 (Preferred)</strong>：<strong>Lenalidomide</strong> <span class="badge b-pref">首選</span></li>
+              <li><strong>其他推薦</strong>：ESA（Epoetin alfa 或 Darbepoetin alfa）</li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">sEPO &gt; 500 mU/mL</div>
+            <ul>
+              <li><strong>首選 (Preferred)</strong>：<strong>Lenalidomide</strong> <span class="badge b-cat1">Category 1</span></li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">後續追蹤</div>
+            <ul>
+              <li><strong>有反應</strong>：持續原藥，調降至可耐受劑量（目標 Hb 10–12 g/dL）。</li>
+              <li><strong>無反應（Lenalidomide 3–6月 / ESA 6–8週）或復發</strong>：重新骨髓/分子檢查，轉入 <strong>sEPO &gt;500 路徑 (MDS-10)</strong>（<em>註：Imetelstat 不適用於 MDS-5q</em>）。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: MDS-SF3B1 -->
+      <div class="tab-panel" id="lr-sf3b1">
+        <h4>MDS-<em>SF3B1</em> (Low Blasts)：無 del(5q)，RS ≥15%（或 RS ≥5% 伴 <em>SF3B1</em> 突變）— MDS-7</h4>
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-label">一線治療</div>
+            <ul>
+              <li><strong>首選</strong>：<strong>Luspatercept-aamt</strong> <span class="badge b-cat1">Category 1</span>（可考慮併用 ESA）</li>
+              <li><strong>其他推薦</strong>：
+                <br>• <strong>Imetelstat</strong>（若 sEPO &gt;500，不適合 ESA）
+                <br>• 考慮 <strong>Epoetin alfa / Darbepoetin alfa</strong>（若 <strong>sEPO ≤200 mU/mL</strong>）<span class="badge b-new">v1.2027</span>
+              </li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">無反應 / 復發（依 sEPO 分流）</div>
+            <ul>
+              <li><strong>sEPO ≤500</strong>：
+                <br>• 首選：<strong>Imetelstat</strong> <span class="badge b-cat1">Category 1</span>
+                <br>• 其他：<strong>ESA ± G-CSF</strong>
+              </li>
+              <li><strong>sEPO &gt;500</strong>（或一線 Imetelstat 失敗）：
+                <br>• 首選：<strong>Imetelstat</strong>（若未用）或 <strong>Luspatercept</strong> <span class="badge b-cat1">Cat 1</span>（若未用）
+                <br>• 其他：考慮 <strong>Lenalidomide</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">再失敗 / 復發</div>
+            <ul>
+              <li>轉入 <strong>sEPO &gt;500 路徑 (MDS-10)</strong></li>
+              <li>其他推薦：
+                <br>• m<em>IDH1</em> → <strong>Ivosidenib</strong>
+                <br>• m<em>IDH2</em> → <strong>Enasidenib</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: UBA1 / VEXAS -->
+      <div class="tab-panel" id="lr-uba1">
+        <h4>MDS 伴致病性 <em>UBA1</em> 突變與 VEXAS 症候群症狀 — MDS-8 <span class="badge b-new">v1.2027 新增</span></h4>
+        <div class="callout purple">
+          <strong>🔥 認識 VEXAS 症候群</strong> (Vacuoles, E1-enzyme, X-linked, Autoinflammatory, Somatic)：
+          由 <em>UBA1</em> 體細胞突變引起的嚴重自體發炎與血液疾病，以全身性發炎、骨髓前驅細胞空泡化、血球低下與低風險 MDS 為特徵。主要見於男性，但女性若具後天性 Monosomy X 或 Turner syndrome 亦可發病。<em>註：非 UBA1 突變但伴隨自體免疫現象的 MDS 亦可比照此策略處置。</em>
+        </div>
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-label">一線治療（依症狀表現）</div>
+            <ul>
+              <li><strong>全身性發炎症状（發燒、疲倦等）</strong>：
+                <br><strong>類固醇 (Prednisone)</strong>（與風濕免疫科合作）<strong>及/或 JAK2 抑制劑 (Ruxolitinib, Pacritinib)</strong></li>
+              <li><strong>貧血為主</strong>：
+                <br><strong>Epoetin alfa</strong> 或 <strong>Darbepoetin alfa</strong></li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">惡化 / 無反應 / 復發</div>
+            <ul>
+              <li><strong>Azacitidine</strong> 或 <strong>Decitabine</strong> 或 <strong>DEC-C</strong></li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">再惡化 / 無反應</div>
+            <ul>
+              <li><strong>Allo-HCT</strong>（異體造血幹細胞移植）</li>
+            </ul>
+          </div>
+        </div>
+        <h4>Table 1. <em>UBA1</em> 典型與非典型致病突變位點</h4>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>分類</th><th>基因區域 (Gene Domain)</th><th>致病變異位點 (Variants)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>典型突變 (Canonical)</strong></td>
+                <td>IAD exon 3 &amp; splice site</td>
+                <td><code>M41V</code>, <code>M41T</code>, <code>M41L</code>, <code>c.118-1G&gt;C</code>, <code>c.118-2A&gt;C</code>, <code>c.119&gt;C</code></td>
+              </tr>
+              <tr>
+                <td rowspan="2"><strong>非典型突變 (Non-canonical)</strong></td>
+                <td>IAD exon 3</td>
+                <td><code>S56F</code>, <code>Y55H</code></td>
+              </tr>
+              <tr>
+                <td>AAD exon 14</td>
+                <td><code>G477A</code>, <code>D506N</code>, <code>D506G</code>, <code>A478S</code>, <code>S621C</code>, <code>D585A</code>, <code>D585E</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab 5: No 5q, RS <15%, EPO <=500 -->
+      <div class="tab-panel" id="lr-epo-low">
+        <h4>無 del(5q)、RS &lt;15%（或 RS &lt;5% 伴 <em>SF3B1 / UBA1</em>），且 sEPO ≤500 mU/mL — MDS-9</h4>
+        <div class="flow-row">
+          <div class="flow-step">
+            <div class="step-label">一線治療</div>
+            <ul>
+              <li><strong>Epoetin alfa</strong> 或 <strong>Darbepoetin alfa</strong></li>
+              <li>或 <strong>Luspatercept-aamt</strong>（<strong>sEPO &gt;200 mU/mL 者較優先</strong>）</li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">無反應 / 復發</div>
+            <ul>
+              <li><strong>首選</strong>：<strong>Imetelstat</strong> <span class="badge b-cat1">Category 1</span> 或 <strong>Luspatercept</strong>（若未用過）</li>
+              <li><strong>其他推薦</strong>：ESA ± <strong>G-CSF</strong> 或 <strong>Lenalidomide</strong>（10 mg/d，限 ANC &gt;0.5、PLT &gt;50K）</li>
+            </ul>
+          </div>
+          <div class="flow-step">
+            <div class="step-label">再失敗 / 復發</div>
+            <ul>
+              <li>轉入 <strong>sEPO &gt;500（IST 反應差）路徑 (MDS-10)</strong></li>
+              <li>首選：<strong>Imetelstat</strong> <span class="badge b-cat1">Cat 1</span>（若未用過）</li>
+              <li>特定情況：Ivosidenib (m<em>IDH1</em>)、Enasidenib (m<em>IDH2</em>)、或 <strong>精選病人考慮 Allo-HCT</strong> <span class="badge b-new">v1.2027</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 6: No 5q, RS <15%, EPO >500 -->
+      <div class="tab-panel" id="lr-epo-high">
+        <h4>無 del(5q)、RS &lt;15%（或 RS &lt;5% 伴 <em>SF3B1 / UBA1</em>），且 sEPO &gt;500 mU/mL — MDS-10</h4>
+        <div class="grid-2">
+          <div class="box">
+            <h4>A. IST 反應機率高 (Good Probability to Respond to IST)</h4>
+            <p style="font-size:13px;color:var(--text-muted);">條件：一般 ≤60 歲且骨髓 blasts ≤5%、低細胞骨髓 (hypocellular)、PNH clone 陽性、或 <em>STAT3</em> 突變 T 細胞株。</p>
+            <ul>
+              <li><strong>一線</strong>：<strong>ATG + Cyclosporin A ± Eltrombopag</strong>（臨床適當時可省略 ATG）</li>
+              <li><strong>無反應 (3–6月) / 不耐受 / 復發</strong>：轉入右側「IST 反應機率低」路徑。</li>
+            </ul>
+          </div>
+          <div class="box">
+            <h4>B. IST 反應機率低 (Poor Probability to Respond to IST)</h4>
+            <ul>
+              <li><strong>臨床試驗</strong></li>
+              <li><strong>首選</strong>：<strong>Imetelstat</strong>（若未用過；不適用 MDS-5q）</li>
+              <li><strong>其他推薦</strong>：Azacitidine / Decitabine / DEC-C</li>
+              <li><strong>特定情況</strong>：Lenalidomide（未用過）或 Luspatercept（未用過）</li>
+              <li><strong>失敗（Aza 6週期 / Dec 4週期 / Imetelstat / Len / Luspa 無效）</strong>：
+                <br>• m<em>IDH1</em> → <strong>Ivosidenib</strong>
+                <br>• m<em>IDH2</em> → <strong>Enasidenib</strong>
+                <br>• 無 m<em>IDH</em> → <strong>臨床試驗</strong> 或 <strong>精選病人 Allo-HCT</strong>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. HIGHER-RISK MDS -->
+    <section class="card" id="higher-risk">
+      <div class="sec-header">
+        <h2>7. 高風險 MDS 治療策略 (IPSS-R &gt;3.5 或 IPSS-M &gt;0)</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-11</span><span class="code-tag">MDS-12</span><span class="code-tag">MDS-12A</span></div>
+      </div>
+
+      <div class="callout danger">
+        <strong>🚨 高風險治療兩大關鍵警語：</strong>
+        <ul style="margin:6px 0 0;">
+          <li><strong>Venetoclax 禁忌情境</strong> <span class="badge b-new">v1.2027</span>：高風險 MDS 但 <strong>骨髓 blasts &lt;5% 者，不應使用 Venetoclax</strong>！合併 HMA 使用時，Venetoclax 採月週期 <strong>≤14 天</strong> 給藥，並於 1–2 週期後追蹤骨髓評估造血恢復。</li>
+          <li><strong><em>TP53</em> 雙對偶基因突變</strong>：即使接受異體移植預後仍極差，應及早與移植醫師討論並優先納入臨床試驗。</li>
+        </ul>
+      </div>
+
+      <div class="grid-2">
+        <div class="box">
+          <h3>🏥 適合移植候選人 (Transplant Candidate, MDS-11)</h3>
+          <p style="font-size:13px;color:var(--text-muted);">評估條件：年齡（至少可至 75 歲）、體能狀態、主要共病、心理社會與照顧者支持、捐贈者可及性。<strong>建議及早轉介移植評估！</strong></p>
+          <h4>一線與橋接治療</h4>
+          <ul>
+            <li><strong>直接 Allo-HCT</strong>（HLA 相合親屬/非親屬、半相合或臍帶血）</li>
+            <li><strong>Aza + Ivosidenib</strong>（若 m<em>IDH1</em> <span class="badge b-cat2b">Cat 2B</span>）→ 接 Allo-HCT</li>
+            <li><strong>臨床試驗</strong> → 接 Allo-HCT</li>
+            <li><strong>橋接降腫瘤治療 (Debulking)</strong>（目標將 blasts 降至 &lt;5%，尤其 RIC 移植前；但部分中心未達 &lt;5% 仍可移植）：
+              <br>• <strong>Azacitidine ± Venetoclax</strong>
+              <br>• <strong>Decitabine ± Venetoclax</strong> 或 <strong>DEC-C ± Venetoclax</strong>
+              <br>• <strong>高強度化療</strong>（如 <strong>CPX-351</strong> 雙藥微脂體 Cytarabine/Daunorubicin，優先臨床試驗或作移植橋接）
+            </li>
+          </ul>
+          <h4>橋接後分流</h4>
+          <ul>
+            <li>有反應或無 m<em>IDH</em> → <strong>Allo-HCT</strong></li>
+            <li>無反應且 m<em>IDH1</em> → Ivosidenib / Olutasidenib <span class="badge b-cat2b">Cat 2B</span> / Aza+Olutasidenib <span class="badge b-cat2b">Cat 2B</span> → 接 Allo-HCT</li>
+            <li>無反應且 m<em>IDH2</em> → <strong>Enasidenib</strong></li>
+          </ul>
+          <h4>移植後復發或無反應</h4>
+          <ul>
+            <li>考慮<strong>二次 Allo-HCT 或 DLI</strong>（若首次移植後有長期緩解）、<strong>臨床試驗</strong>、或 <strong>HMA</strong>（Aza / Dec / DEC-C）。再失敗則轉臨床試驗或支持性療法。</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h3>💊 不適合移植候選人 (Non-Transplant Candidate, MDS-12)</h3>
+          <h4>一線治療</h4>
+          <ul>
+            <li><strong>臨床試驗</strong></li>
+            <li><strong>首選 (Preferred)</strong>：
+              <br>• <strong>Azacitidine</strong> <span class="badge b-cat1">Category 1</span>（唯一三期試驗 AZA-001 證實延長 OS：24.5 vs 15.0 月）
+              <br>• <strong>Decitabine</strong>
+              <br>• <strong>口服 DEC-C</strong>（IPSS Int-1 以上可替代靜脈 Decitabine）
+            </li>
+            <li><strong>特定情況 (Useful in Certain Circumstances)</strong>：
+              <br>• <strong>HMA + Venetoclax</strong>（視體能與耐受度，限 blasts ≥5%）
+              <br>• <strong>IDH1 抑制劑 (Ivosidenib 或 Olutasidenib) ± HMA</strong>（若 m<em>IDH1</em> <span class="badge b-cat2b">Cat 2B</span>）
+            </li>
+          </ul>
+          <h4>療效評估與維持</h4>
+          <p>HMA 應持續至少 <strong>4–6 週期</strong>評估療效（<strong>Aza 至少 6 週期、Dec/DEC-C 至少 4 週期</strong>才判定失敗）。有臨床獲益者應持續維持治療至惡化或無法耐受。</p>
+          <h4>無反應 / 不耐受 / 復發</h4>
+          <ul>
+            <li><strong>m<em>IDH1</em></strong>（未用過 IDH1i）→ <strong>Ivosidenib</strong> 或 <strong>Olutasidenib</strong> <span class="badge b-cat2b">Cat 2B</span> → 再失敗轉臨床試驗</li>
+            <li><strong>m<em>IDH2</em></strong> → <strong>Enasidenib</strong></li>
+            <li><strong>無 m<em>IDH</em></strong> → <strong>臨床試驗</strong> 或 <strong>HMA 加上 Venetoclax</strong>（若未用過且 blasts ≥5%）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. DOSING QUICK TABLE -->
+    <section class="card" id="dosing">
+      <div class="sec-header">
+        <h2>8. MDS 常用藥物劑量與調整原則速查</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-6A ~ 12A</span></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>藥物</th>
+              <th>標準起始劑量</th>
+              <th>劑量調整 / 評估時機 / 注意事項</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Epoetin alfa</strong></td>
+              <td>40,000–60,000 U SC, 1–2 次/週</td>
+              <td>6–8 週評估反應（目標 Hb 10–12 g/dL，<strong>不可 &gt;12</strong>）；無反應可加量或併用 G-CSF。</td>
+            </tr>
+            <tr>
+              <td><strong>Darbepoetin alfa</strong></td>
+              <td>150–300 mcg SC Q2W</td>
+              <td>部分機構最高至 500 mcg Q2W；6–8 週評估反應。</td>
+            </tr>
+            <tr>
+              <td><strong>G-CSF (Filgrastim)</strong></td>
+              <td>1–2 mcg/kg SC, 1–2 次/週</td>
+              <td>併用 ESA 治療貧血（尤其 RS ≥15%）；使用期間監測血小板。</td>
+            </tr>
+            <tr>
+              <td><strong>Lenalidomide</strong></td>
+              <td>10 mg PO QD（D1–21/28d 或 28d/月）</td>
+              <td>評估 2–4 個月；非 del(5q) 須 ANC &gt;0.5、PLT &gt;50K；注意骨髓抑制、腎功能調整與 <strong><em>TP53</em> 選殖擴增</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>Luspatercept-aamt</strong><br><span class="badge b-new">v1.2027 細則</span></td>
+              <td><strong>1 mg/kg SC Q3W</strong></td>
+              <td>
+                • <strong>ESA-naïve</strong>：連用 ≥2 劑 (6週) 未達免輸血或 Hb &lt;10 且上升 &lt;1 g/dL → 升至 <strong>1.33 mg/kg</strong> → 再 ≥2 劑仍符標準 → <strong>1.75 mg/kg</strong>。<br>
+                • <strong>ESA 失敗/不耐受</strong>：連用 ≥2 劑 (6週) 未達免輸血 → 1.33 → 1.75 mg/kg。<br>
+                • <strong>減量/暫停</strong>：單週期 Hb 上升 <strong>&gt;2 g/dL 降一階</strong>；無輸血下給藥前 Hb <strong>≥12 g/dL 暫停</strong>。
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Imetelstat</strong></td>
+              <td><strong>7.1 mg/kg IV 每月一次</strong></td>
+              <td>起始門檻：<strong>PLT ≥75,000 且 ANC ≥1,500</strong>；常見暫時性血小板/嗜中性球低下須調降劑量；<strong>不適用 MDS-5q</strong>。</td>
+            </tr>
+            <tr>
+              <td><strong>Azacitidine (Aza)</strong></td>
+              <td>高風險：<strong>75 mg/m²/d SC/IV × 7d</strong> (Q28d)<br>低風險：可考慮 <strong>5 天</strong>療程</td>
+              <td>至少 <strong>6 週期</strong>評估療效；AZA-001 證實 7 天療程具 OS 優勢。</td>
+            </tr>
+            <tr>
+              <td><strong>Decitabine (Dec) / DEC-C</strong></td>
+              <td>高風險：<strong>20 mg/m²/d IV × 5d</strong> (Q28d)<br>低風險：可考慮 <strong>3 天</strong>療程<br>DEC-C：口服取代 IV (IPSS Int-1+)</td>
+              <td>至少 <strong>4 週期</strong>評估療效。</td>
+            </tr>
+            <tr>
+              <td><strong>Venetoclax (併用 HMA)</strong></td>
+              <td>每月 <strong>≤14 天</strong>（依 HMA 併用指引）</td>
+              <td>1–2 週期後追蹤骨髓；<strong>blasts &lt;5% 不可使用</strong>。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 9. SUPPORTIVE CARE -->
+    <section class="card" id="supportive">
+      <div class="sec-header">
+        <h2>9. 支持性療法與排鐵治療</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-13</span></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="box">
+          <h4>🩸 輸血與出血管理</h4>
+          <ul>
+            <li><strong>RBC 輸血</strong>：用於<strong>症狀性貧血</strong>（避免依武斷 Hb 數值輸血，除活動性冠心病、心衰、中風外，以最少單位緩解症狀）；建議 <strong>CMV-safe</strong> 血品。</li>
+            <li><strong>血小板輸血</strong>：用於血小板低下出血；無出血者一般不常規預防性輸注，除非 <strong>PLT &lt;10,000/mcL</strong>。</li>
+            <li><strong>輻照血品</strong>：潛在移植候選人與指定捐血者血品皆建議輻照。</li>
+            <li><strong>嚴重血小板低下</strong>：低風險 MDS 合併嚴重或危及生命的血小板低下，可考慮 TPO-RA（<strong>Romiplostim 或 Eltrombopag</strong>）。頑固出血可考慮抗纖溶藥物（如 Aminocaproic acid）。</li>
+            <li><strong>感染控制</strong>：細菌感染給抗生素；開始治療時可依院內指引考慮預防性抗生素。G-CSF <strong>不作常規感染預防</strong>，僅用於嗜中性球低下合併反覆或抗藥性感染。</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>🧲 排鐵治療 (Iron Chelation)</h4>
+          <ul>
+            <li><strong>適用對象</strong>：累積輸血 <strong>&gt;20–30 單位 RBC</strong>，特別是<strong>低風險 MDS</strong> 或<strong>潛在移植候選人</strong> (IPSS Low/Int-1)。</li>
+            <li><strong>啟動與目標</strong>：當 <strong>Serum Ferritin &gt;2500 ng/mL</strong>，目標降至 <strong>&lt;1000 ng/mL</strong>。</li>
+            <li><strong>藥物選擇</strong>：每日皮下注射 <strong>Deferoxamine</strong> 或口服 <strong>Deferasirox</strong>。</li>
+            <li><strong>禁忌與監測</strong>：
+              <br>• <strong>CrCl &lt;40 mL/min 禁用</strong> Deferasirox 與 Deferoxamine！
+              <br>• <strong>高風險 MDS 禁用 Deferasirox</strong>（黑框警語：腎/肝衰竭與 GI 出血）。
+              <br>• 使用 Deferasirox 須定期追蹤腎/肝功能，並<strong>每年進行眼科與聽力檢查</strong>。
+            </li>
+          </ul>
+          <h4>🛡️ 移植後照護</h4>
+          <p>接受免疫抑制治療 (IST) 期間應持續給予抗微生物預防性用藥（詳見 ASTCT / NCCN HCT 指引）。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. RESPONSE CRITERIA -->
+    <section class="card" id="response">
+      <div class="sec-header">
+        <h2>10. 療效評估標準 (IWG 2018 &amp; IWG 2023) <span class="badge b-new">v1.2027 新增</span></h2>
+        <div class="sec-tags"><span class="code-tag">MDS-A 1~4</span></div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="resp-hi">血液學反應 (IWG 2018 vs 2006)</button>
+        <button class="tab-btn" data-tab="resp-hr">高風險 MDS 療效標準 (IWG 2023 vs 2006)</button>
+      </div>
+
+      <div class="tab-panel active" id="resp-hi">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>評估項目</th><th>IWG 2018 現代標準 (重點)</th><th>IWG 2006 舊標準</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RBC 輸血負擔分級</strong></td>
+                <td>
+                  • <strong>NTD (未輸血)</strong>：16 週內 0 U<br>
+                  • <strong>LTB (低負擔)</strong>：16 週內 3–7 U（≥2 次輸血，8 週最多 3 U）<br>
+                  • <strong>HTB (高負擔)</strong>：16 週內 ≥8 U 且 8 週 ≥4 U
+                </td>
+                <td>TD：8 週內 ≥4 U (Hb &lt;9)；TID：&lt;4 U</td>
+              </tr>
+              <tr>
+                <td><strong>HI-E (紅血球改善)</strong></td>
+                <td>
+                  • <strong>NTD</strong>：≥2 次連續 Hb 上升 ≥1.5 g/dL 維持 ≥8 週（反應 ≥16 週具臨床意義）<br>
+                  • <strong>LTB</strong>：免輸血 (TI) ≥8 週（反應 ≥16 週具臨床意義）<br>
+                  • <strong>HTB</strong>：Major = TI ≥8 週；Minor = ≥16 週內輸血量減少 ≥50%
+                </td>
+                <td>Hb ↑≥1.5 g/dL 及/或 8 週減少 ≥4 U RBC</td>
+              </tr>
+              <tr>
+                <td><strong>HI-P (血小板改善)</strong></td>
+                <td>治療前 PLT &lt;100K：若基準 &gt;20K 則絕對 ↑30K；若基準 &lt;20K 則升至 &gt;20K 且 ↑≥100%。<em>(註：使用 TPO-RA 若連續兩次 PLT &gt;450K 應停藥)</em></td>
+                <td>同左</td>
+              </tr>
+              <tr>
+                <td><strong>HI-N (嗜中性球改善)</strong></td>
+                <td>治療前 ANC &lt;1.0×10⁹/L：增加 ≥100% 且絕對 ↑&gt;0.5×10⁹/L</td>
+                <td>同左</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="resp-hr">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>療效分類</th><th>IWG 2023 標準（高風險 MDS）</th><th>與 IWG 2006 主要差異</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CR (完全緩解)</strong></td>
+                <td>BM blasts <strong>≤5%</strong>、PB 無 blasts、<strong>Hb ≥10 g/dL</strong>、PLT ≥100K、ANC ≥1.0K</td>
+                <td>Hb 門檻由 11 降至 <strong>10 g/dL</strong></td>
+              </tr>
+              <tr>
+                <td><strong>CR equivalent</strong></td>
+                <td>治療前 BM blasts &lt;5% 者：BM &lt;5%、PB 無 blasts、完全染色體緩解 + 同 CR 血球</td>
+                <td>IWG 2023 新增</td>
+              </tr>
+              <tr>
+                <td><strong>CR<sub>L</sub> (CR<sub>uni</sub> / CR<sub>bi</sub>)</strong></td>
+                <td>BM blasts ≤5%、PB 無 blasts，僅達 1 項 (CR<sub>uni</sub>) 或 2 項 (CR<sub>bi</sub>) 血球標準</td>
+                <td>取代舊版單純 mCR 概念</td>
+              </tr>
+              <tr>
+                <td><strong>CRh (部分血球恢復 CR)</strong></td>
+                <td>BM blasts ≤5%、PB 無 blasts、<strong>PLT ≥50K 且 ANC ≥0.5K</strong>（未達 CR<sub>uni/bi</sub>）</td>
+                <td>IWG 2023 新增</td>
+              </tr>
+              <tr>
+                <td><strong>PR (部分緩解)</strong></td>
+                <td>BM blasts 減少 ≥50% 但仍 ≥5%，血球達 CR 標準 (Hb ≥10, PLT ≥100K, ANC ≥1.0K)</td>
+                <td>Hb 門檻改為 ≥10</td>
+              </tr>
+              <tr>
+                <td><strong>ORR (總反應率)</strong></td>
+                <td><strong>ORR = CR (或 CR eq) + PR + CR<sub>L</sub> + CRh + HI</strong></td>
+                <td>明確定義公式</td>
+              </tr>
+              <tr>
+                <td><strong>PD (疾病惡化)</strong></td>
+                <td>Blasts 增加 ≥50% 且較治療前增加 ≥5%；或新發/反覆需輸血且無他系 HI；轉化 AML (blasts ≥20%)</td>
+                <td>更貼近臨床實務</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11. SOMATIC GENES -->
+    <section class="card" id="somatic-genes">
+      <div class="sec-header">
+        <h2>11. MDS 常見體細胞突變基因速查表 (29 基因)</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-D 1~3</span></div>
+      </div>
+      <p style="font-size:13.5px;color:var(--text-muted);">註：部分基因（如 <em>TET2, DNMT3A, TP53</em>）可出現於正常老化 (CHIP)，單獨突變不可診斷 MDS；標示 <strong>(G)</strong> 者可能為生殖系突變，須以非造血組織確認並考慮 LOH。</p>
+
+      <div class="filter-row">
+        <input type="text" id="geneSearch" class="gene-search" placeholder="篩選基因名稱或臨床意義..." />
+        <button class="filter-btn active" data-gfilter="all">全部 (29)</button>
+        <button class="filter-btn" data-gfilter="poor">不良預後</button>
+        <button class="filter-btn" data-gfilter="good">良好預後</button>
+        <button class="filter-btn" data-gfilter="target">治療相關/特殊</button>
+        <button class="filter-btn" data-gfilter="germline">注意生殖系 (G)</button>
+      </div>
+
+      <div class="table-wrap">
+        <table id="geneTable">
+          <thead>
+            <tr><th>基因</th><th>典型突變類型 / 熱點</th><th>發生率</th><th>臨床與預後意義</th></tr>
+          </thead>
+          <tbody>
+            <tr data-tags="target germline"><td><strong>TET2</strong> (G)</td><td>Nonsense/FS/Splice; Missense 1134–1444, 1842–1921</td><td>20%–25%</td><td>與正常核型相關；CMML 常見 (40–60%)；常見於 CHIP/CCUS；可能對 HMA 反應較佳。</td></tr>
+            <tr data-tags="good target"><td><strong>SF3B1</strong></td><td>Missense: K700E, E622, H662, K666 等</td><td>20%–30%</td><td>強烈關聯 RS (MDS-RS 80%)；<strong>獨立良好預後</strong>；Luspatercept 反應佳。</td></tr>
+            <tr data-tags="poor"><td><strong>ASXL1</strong></td><td>Nonsense / Frameshift</td><td>15%–25%</td><td><strong>獨立不良預後</strong> (MDS &amp; CMML)；CMML 40–50%；常見於 CHIP/CCUS。</td></tr>
+            <tr data-tags=""><td><strong>DNMT3A</strong></td><td>Nonsense/FS/Splice; Missense R882 等</td><td>12%–18%</td><td>AML 更常見 (尤其 R882)；常見於 CHIP/CCUS。</td></tr>
+            <tr data-tags="poor germline"><td><strong>RUNX1</strong> (G)</td><td>Nonsense / Frameshift</td><td>10%–15%</td><td><strong>獨立不良預後</strong>；注意生殖系家族性血小板異常。</td></tr>
+            <tr data-tags="poor"><td><strong>SRSF2</strong></td><td>Missense / In-frame del: P95</td><td>10%–15%</td><td>CMML 常見 (40%)；<strong>不良預後</strong>。</td></tr>
+            <tr data-tags="poor target germline"><td><strong>TP53</strong> (G)</td><td>Nonsense/FS/Splice; Missense (除 P47S/P72R)</td><td>8%–12%</td><td><strong>獨立極不良預後</strong>；複雜核型 (50%)、del(5q) (15–20%)；預測 Lenalidomide 抗藥/復發。</td></tr>
+            <tr data-tags="poor"><td><strong>U2AF1</strong></td><td>Missense: S34, Q157</td><td>8%–12%</td><td><strong>不良預後</strong>。</td></tr>
+            <tr data-tags="poor germline"><td><strong>NRAS</strong> (G)</td><td>Missense: G12, G13, Q61</td><td>5%–10%</td><td><strong>不良預後</strong>（尤其低風險組）；CMML/JMML (~15%)；孤立熱點須鑑別 RALD。</td></tr>
+            <tr data-tags="poor"><td><strong>EZH2</strong></td><td>Nonsense / Frameshift</td><td>5%–10%</td><td><strong>獨立不良預後</strong> (MDS &amp; MDS/MPN)；CMML 12%。</td></tr>
+            <tr data-tags="poor"><td><strong>ZRSR2</strong></td><td>Nonsense / Frameshift</td><td>5%–10%</td><td><strong>不良預後</strong>。</td></tr>
+            <tr data-tags="poor"><td><strong>STAG2</strong></td><td>Nonsense / FS / Splice</td><td>5%–10%</td><td><strong>不良預後</strong>。</td></tr>
+            <tr data-tags=""><td><strong>PPM1D</strong></td><td>Nonsense / Frameshift</td><td>~5%</td><td>與治療相關 MDS (t-MDS) 相關；獨立於 TP53 則無額外不良預後；常見於 CHIP/CCUS。</td></tr>
+            <tr data-tags="target"><td><strong>UBA1</strong></td><td>Missense: exon 3 M41T/V/L 及非典型位點</td><td>~5%</td><td><strong>VEXAS 症候群</strong>（全身自體發炎 + MDS）；會診風濕科，可用類固醇/JAK2i/HMA (MDS-8)。</td></tr>
+            <tr data-tags="germline"><td><strong>CBL</strong> (G)</td><td>Missense: 366–420</td><td>&lt;5%</td><td>CMML (10–20%) 與 JMML (15%) 較常見。</td></tr>
+            <tr data-tags="germline"><td><strong>NF1</strong> (G)</td><td>Nonsense / FS / Splice</td><td>&lt;5%</td><td>CMML (5–10%)、JMML (30%，常為生殖系)。</td></tr>
+            <tr data-tags="poor germline"><td><strong>ETV6</strong> (G)</td><td>Nonsense / Frameshift</td><td>&lt;5%</td><td><strong>獨立不良預後</strong>；生殖系伴血小板低下與 ALL/MDS 傾向。</td></tr>
+            <tr data-tags="target"><td><strong>JAK2</strong></td><td>Missense: V617F</td><td>&lt;5%</td><td>MDS/MPN-RS-T 常見 (50%)，常與 <em>SF3B1</em> 共存。</td></tr>
+            <tr data-tags=""><td><strong>CALR</strong></td><td>Frameshift: after codon 352</td><td>&lt;5%</td><td>見於 MDS/MPN-RS-T，可與 <em>SF3B1</em> 共存。</td></tr>
+            <tr data-tags=""><td><strong>MPL</strong></td><td>Missense: W515L/K</td><td>&lt;5%</td><td>見於 MDS/MPN-RS-T，可與 <em>SF3B1</em> 共存。</td></tr>
+            <tr data-tags="target"><td><strong>IDH1</strong></td><td>Missense: R132</td><td>&lt;5%</td><td>AML 更常見；標靶藥物：<strong>Ivosidenib / Olutasidenib</strong>。</td></tr>
+            <tr data-tags="poor target"><td><strong>IDH2</strong></td><td>Missense: R140Q, R172</td><td>&lt;5%</td><td>AML 更常見；<strong>不良預後</strong>；標靶藥物：<strong>Enasidenib</strong>。</td></tr>
+            <tr data-tags="poor"><td><strong>SETBP1</strong></td><td>Missense: E858, T864, I865, D868, S869, G870</td><td>&lt;5%</td><td>與疾病惡化相關；aCML (24%)、CMML (5–10%)、JMML (7%)。</td></tr>
+            <tr data-tags=""><td><strong>PHF6</strong></td><td>Nonsense / FS / Splice</td><td>&lt;5%</td><td>多見於芽細胞增加 (EB) 者，與存活無顯著關聯。</td></tr>
+            <tr data-tags="poor"><td><strong>BCOR</strong></td><td>Nonsense / FS / Splice</td><td>&lt;5%</td><td><strong>不良預後</strong>；CMML (5–10%)。</td></tr>
+            <tr data-tags="target"><td><strong>STAT3</strong></td><td>Missense: 584–674</td><td>&lt;5%</td><td>見於 MDS 合併 LGL；與免疫骨髓衰竭相關，提示可能對 <strong>IST 有反應</strong>。</td></tr>
+            <tr data-tags="poor germline"><td><strong>GATA2</strong> (G)</td><td>Nonsense/FS/Splice; Missense 349–398</td><td>罕見</td><td><strong>不良預後</strong>；生殖系伴免疫缺乏與早期 MDS/AML。</td></tr>
+            <tr data-tags="germline"><td><strong>DDX41</strong> (G)</td><td>Nonsense/FS/Splice; Missense R525H</td><td>罕見</td><td>成人最常見生殖系易感基因之一（中位 66 歲發病）；常伴低細胞、正常核型。</td></tr>
+            <tr data-tags="poor"><td><strong>FLT3 / WT1</strong></td><td>FLT3-ITD/D835; WT1 Nonsense/FS/Splice</td><td>罕見</td><td><strong>不良預後</strong>；<em>FLT3 / NPM1</em> 在 MDS 罕見，提示可能正演變為 AML（<em>NPM1</em> 為 AML 定義突變）。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 12. HEREDITARY HMMPS -->
+    <section class="card" id="hereditary">
+      <div class="sec-header">
+        <h2>12. 遺傳性骨髓惡性腫瘤易感症候群 (HMMPS)</h2>
+        <div class="sec-tags"><span class="code-tag">MDS-E 1~5</span><span class="code-tag">MDS-F 1~7</span></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="box">
+          <h4>🎯 哪些病人應接受篩檢 (Whom to Test)</h4>
+          <ul>
+            <li>疑似 HMMPS 病人的<strong>親屬異體移植捐贈者</strong>（避免誤用帶原親屬捐贈！）。</li>
+            <li>任何年齡臨床懷疑遺傳易感者（如先天異常、肺/肝纖維化、免疫不全、多發癌症、化放療過度毒性、造血幹細胞動員不良、不明原因巨球性貧血）。</li>
+            <li>所有 <strong>&lt;50 歲</strong>之 MDS 或 AML 病人（<em>註：DDX41 與短端粒症候群常 &gt;50 歲才發病</em>）。</li>
+            <li><strong>低細胞 MDS (Hypocellular MDS)</strong> 或新診斷再生不良性貧血。</li>
+            <li>個人有 MDS/AML（含治療相關）且合併 <strong>≥1 種其他癌症</strong>。</li>
+            <li>體細胞 NGS 檢出疑似生殖系 P/LP 變異者。</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>🧬 正確採檢來源與輔助檢驗 (MDS-E 4/6)</h4>
+          <ul>
+            <li><strong>首選生殖系 DNA 來源</strong>：<strong>培養皮膚纖維母細胞 (Cultured skin fibroblasts)</strong>（排除血球體細胞突變與體細胞回復突變）。</li>
+            <li><strong>替代來源</strong>：<strong>毛囊球 DNA (Hair root bulbs)</strong> <span class="badge b-new">v1.2027</span>；口腔拭子（注意周邊血污染）；緩解期周邊血（注意 <em>SAMD9/9L</em> 等可能出現回復突變致偽陰性）。</li>
+            <li><strong>功能性篩檢</strong>：
+              <br>• <strong>Fanconi anemia</strong>：染色體斷裂試驗 (MMC/DEB)。
+              <br>• <strong>短端粒症候群</strong>：Flow-FISH 端粒長度（佔成人 MDS/AML 約 3–5%，肺纖維化史機率最高；&gt;60 歲或 AML 循環芽細胞多時準確度低）。
+              <br>• <strong>Shwachman-Diamond</strong>：血清胰澱粉酶 (pancreatic isoamylase) / 胰蛋白酶原偏低。
+              <br>• <strong>Diamond-Blackfan</strong>：紅血球 ADA (eADA) 升高。
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>主要遺傳易感基因與臨床特徵一覽 (MDS-F)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>分類</th><th>症候群 / 基因</th><th>終生 MDS/AML 風險</th><th>核心臨床表現</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="2"><strong>無前期血球低下</strong></td>
+              <td><strong><em>CEBPA</em></strong></td>
+              <td>N端 ~90%；C端 ~50%</td>
+              <td>預後較佳之家族性 AML（不經 MDS），復發時常出現不同體細胞二次突變。</td>
+            </tr>
+            <tr>
+              <td><strong><em>DDX41</em></strong></td>
+              <td>一等親 ~50%（族群 ~3%）；男性外顯率高</td>
+              <td>成人常見 (~2–6%)，中位發病 <strong>66 歲</strong>；常伴巨球症、低細胞、低 blasts、正常核型；二次突變多為 <code>R525H</code>。</td>
+            </tr>
+            <tr>
+              <td rowspan="4"><strong>伴前期血球低下或器官異常</strong></td>
+              <td><strong><em>RUNX1</em></strong> (FPD/AML)</td>
+              <td>35%–40%</td>
+              <td>血小板低下與阿斯匹靈樣功能異常；典型發病 20–40 歲；可見濕疹、ALL。</td>
+            </tr>
+            <tr>
+              <td><strong><em>ANKRD26 / ETV6</em></strong></td>
+              <td>ANKRD26: 7.1%</td>
+              <td>正常大小之輕中度血小板低下；<em>ETV6</em> 之 B-ALL 較骨髓腫瘤常見 (2:1)。</td>
+            </tr>
+            <tr>
+              <td><strong><em>GATA2</em> 缺乏症</strong></td>
+              <td>高外顯率</td>
+              <td>單核球/B/NK/CD4 低下、非結核分枝桿菌/病毒感染/疣、淋巴水腫、肺泡蛋白沉積症、兒童 MDS 伴 -7。</td>
+            </tr>
+            <tr>
+              <td><strong><em>SAMD9 / SAMD9L</em></strong></td>
+              <td>未確定</td>
+              <td>MIRAGE (SAMD9) / 共濟失調-全血球低下 (SAMD9L)；伴 Monosomy 7，易發生體細胞回復突變。</td>
+            </tr>
+            <tr>
+              <td rowspan="3"><strong>經典遺傳骨髓衰竭</strong></td>
+              <td><strong>短端粒症候群</strong><br><small><em>TERT, TERC, DKC1, RTEL1, PARN</em> 等</small></td>
+              <td><strong>10%–20%</strong><br>(&gt;50 歲風險最高) <span class="badge b-new">v1.2027</span></td>
+              <td>特發性肺纖維化、早發白髮、肝硬化、骨質疏鬆、先天角化不良三聯徵、頭頸/GI 鱗狀癌。</td>
+            </tr>
+            <tr>
+              <td><strong>Fanconi anemia</strong><br><small><em>FANCA~V, BRCA1/2, PALB2</em></small></td>
+              <td>10% AML；90% 骨髓衰竭</td>
+              <td>身材矮小、咖啡牛奶斑、拇指/前臂異常、染色體脆性、頭頸/生殖道鱗狀癌。</td>
+            </tr>
+            <tr>
+              <td><strong>DBA / SDS / Down</strong></td>
+              <td>DBA: ~5% (45–50歲)</td>
+              <td>DBA (核糖體基因，紅血球發育不全)；SDS (<em>SBDS</em>，胰外分泌不足)；Down (<em>GATA1</em>，AMKL)。</td>
+            </tr>
+            <tr>
+              <td><strong>合併實體腫瘤</strong></td>
+              <td><strong>Li-Fraumeni (<em>TP53</em>)、<em>BRCA1/2</em>、CMMRD、RASopathies、<em>CHEK2</em></strong></td>
+              <td>LFS 全癌 70–90%</td>
+              <td>實體腫瘤治療後易發生 t-MDS/AML；LFS 常伴複雜核型。</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 13. ABBREVIATIONS & CATEGORIES -->
+    <section class="card" id="abbr">
+      <div class="sec-header">
+        <h2>13. NCCN 證據等級與常用縮寫速查</h2>
+        <div class="sec-tags"><span class="code-tag">CAT-1</span><span class="code-tag">ABBR-1/2</span></div>
+      </div>
+
+      <div class="grid-2">
+        <div class="box">
+          <h4>NCCN 證據與共識等級 (未標註者皆為 Category 2A)</h4>
+          <ul>
+            <li><strong>Category 1</strong>：高階證據（≥1 項隨機三期試驗或高品質統合分析）＋一致共識 (≥85%)。</li>
+            <li><strong>Category 2A</strong>：較低階證據＋一致共識 (≥85%)。</li>
+            <li><strong>Category 2B</strong>：較低階證據＋共識 (50%–&lt;85%)。</li>
+          </ul>
+          <h4>偏好分類</h4>
+          <ul>
+            <li><strong>Preferred (首選)</strong>：療效、安全性、證據及可負擔性最佳。</li>
+            <li><strong>Other Recommended (其他推薦)</strong>：療效略低、毒性較高、證據較不成熟或費用較高。</li>
+            <li><strong>Useful in Certain Circumstances (特定情況)</strong>：適用於特定篩選族群。</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h4>常用縮寫快速對照</h4>
+          <p style="font-size:13px;line-height:1.8;">
+            <strong>Allo-HCT</strong> 異體造血幹細胞移植 · <strong>ATG</strong> 抗胸腺細胞球蛋白 · <strong>CCUS</strong> 選殖性未明意義血球低下 · <strong>CGAT / CMA</strong> 染色體基因體晶片 · <strong>CHIP</strong> 未明意義選殖性造血 · <strong>CMML</strong> 慢性骨髓單核球白血病 · <strong>DEC-C</strong> 口服 Decitabine/Cedazuridine · <strong>ESA</strong> 紅血球生成刺激劑 · <strong>FCM</strong> 流式細胞儀 · <strong>HI-E/P/N</strong> 紅血球/血小板/嗜中性球血液學改善 · <strong>HMA</strong> 低甲基化藥物 · <strong>HMMPS</strong> 遺傳性骨髓惡性腫瘤易感症候群 · <strong>ICC</strong> 國際共識分類 · <strong>ICUS</strong> 特發性未明意義血球低下 · <strong>IST</strong> 免疫抑制治療 · <strong>IWG</strong> 國際工作小組 · <strong>LGL</strong> 大顆粒淋巴球 · <strong>LOH</strong> 異質性缺失 · <strong>MGPT / NGS</strong> 多基因定序 · <strong>PNH</strong> 陣發性夜間血紅素尿症 · <strong>RALD</strong> RAS 相關自體免疫淋巴增生症 · <strong>RS</strong> 環狀鐵粒幼細胞 · <strong>sEPO</strong> 血清紅血球生成素 · <strong>SM-AHN</strong> 伴血液腫瘤之系統性肥大細胞增多症 · <strong>TI / TD</strong> 輸血獨立 / 輸血依賴 · <strong>VAF</strong> 變異等位基因頻率 · <strong>VEXAS</strong> 空泡/E1酶/X染色體/自體發炎/體細胞突變症候群
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      整理依據：NCCN Clinical Practice Guidelines in Oncology — Myelodysplastic Syndromes, Version 1.2027 (November 17, 2026)。<br>
+      本網頁僅供醫療專業人員臨床學習與快速查閱參考，實際診療請依最新官方指引與病人個別狀況由醫師獨立判斷。
+    </div>
+  </main>
+
+  <button id="topBtn" title="回到頂端">↑ 頂端</button>
+
+  <script>
+    // Dark / Light Theme
+    const themeBtn = document.getElementById('themeBtn');
+    const savedTheme = localStorage.getItem('mds-theme');
+    if (savedTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeBtn.textContent = '☀️ 淺色';
+    }
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+      themeBtn.textContent = isDark ? '🌙 深色' : '☀️ 淺色';
+      localStorage.setItem('mds-theme', isDark ? 'light' : 'dark');
+    });
+
+    // Mobile Sidebar Toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const sidebar = document.getElementById('sidebar');
+    menuBtn.addEventListener('click', () => sidebar.classList.toggle('open'));
+    sidebar.querySelectorAll('.nav-link').forEach(a => {
+      a.addEventListener('click', () => sidebar.classList.remove('open'));
+    });
+
+    // Tabs
+    function openTab(tabId) {
+      const btn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+      if (btn) btn.click();
+    }
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('section');
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        parent.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const panel = parent.querySelector('#' + btn.dataset.tab);
+        if (panel) panel.classList.add('active');
+      });
+    });
+
+    // Interactive IPSS-R Calculator
+    const calcIds = ['calcCyto', 'calcBlast', 'calcHb', 'calcPlt', 'calcAnc'];
+    function updateIpssR() {
+      const total = calcIds.reduce((sum, id) => sum + parseFloat(document.getElementById(id).value), 0);
+      document.getElementById('calcScoreNum').textContent = total.toFixed(1);
+
+      let cat = '', mos = '', aml = '';
+      if (total <= 1.5) { cat = 'Very Low (極低風險)'; mos = '8.8 年'; aml = '未達到 (NR)'; }
+      else if (total <= 3.0) { cat = 'Low (低風險)'; mos = '5.3 年'; aml = '10.8 年'; }
+      else if (total <= 4.5) { cat = 'Intermediate (中風險)'; mos = '3.0 年'; aml = '3.2 年'; }
+      else if (total <= 6.0) { cat = 'High (高風險)'; mos = '1.6 年'; aml = '1.4 年'; }
+      else { cat = 'Very High (極高風險)'; mos = '0.8 年'; aml = '0.7 年'; }
+
+      const isLower = total <= 3.5;
+      const pathway = isLower
+        ? '<span style="color:var(--ok-text);font-weight:700;">🟢 低風險治療路徑 (IPSS-R ≤3.5)</span> → 參考 MDS-4 ~ MDS-10（改善血球與生活品質）'
+        : '<span style="color:var(--danger-text);font-weight:700;">🔴 高風險治療路徑 (IPSS-R &gt;3.5)</span> → 參考 MDS-11 ~ MDS-12（HMA / 評估 Allo-HCT）';
+
+      document.getElementById('calcDetails').innerHTML =
+        `<div><strong>風險分層：</strong>${cat} ｜ <strong>中位存活 (OS)：</strong>${mos} ｜ <strong>25% AML 轉化：</strong>${aml}</div>` +
+        `<div style="margin-top:6px;">${pathway}</div>`;
+    }
+    calcIds.forEach(id => document.getElementById(id).addEventListener('change', updateIpssR));
+    updateIpssR();
+
+    // Gene Table Search & Filter
+    const geneSearch = document.getElementById('geneSearch');
+    const geneRows = Array.from(document.querySelectorAll('#geneTable tbody tr'));
+    let activeGeneFilter = 'all';
+
+    function filterGenes() {
+      const q = geneSearch.value.trim().toLowerCase();
+      geneRows.forEach(row => {
+        const tags = row.dataset.tags || '';
+        const text = row.textContent.toLowerCase();
+        const matchTag = activeGeneFilter === 'all' || tags.includes(activeGeneFilter);
+        const matchText = !q || text.includes(q);
+        row.style.display = (matchTag && matchText) ? '' : 'none';
+      });
+    }
+    geneSearch.addEventListener('input', filterGenes);
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeGeneFilter = btn.dataset.gfilter;
+        filterGenes();
+      });
+    });
+
+    // Active Nav Highlight & Back to Top
+    const sections = document.querySelectorAll('section.card');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 400 ? 'block' : 'none';
+      let current = '';
+      sections.forEach(sec => {
+        if (window.scrollY >= sec.offsetTop - 110) current = sec.id;
+      });
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    });
+    topBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Instant Full-Text Search & Highlight
+    const searchInput = document.getElementById('searchInput');
+    const searchClear = document.getElementById('searchClear');
+    const searchCount = document.getElementById('searchCount');
+    const contentRoot = document.getElementById('contentRoot');
+
+    function clearHighlights() {
+      contentRoot.querySelectorAll('mark.hl').forEach(m => {
+        const parent = m.parentNode;
+        parent.replaceChild(document.createTextNode(m.textContent), m);
+        parent.normalize();
+      });
+    }
+
+    function performSearch() {
+      const q = searchInput.value.trim();
+      clearHighlights();
+      searchClear.style.display = q ? 'block' : 'none';
+      if (!q) {
+        sections.forEach(s => s.style.display = '');
+        searchCount.textContent = '';
+        return;
+      }
+      const regex = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+      let totalMatches = 0;
+      let firstMark = null;
+
+      sections.forEach(sec => {
+        sec.querySelectorAll('.tab-panel').forEach(p => p.classList.add('active'));
+        let secMatches = 0;
+        const walker = document.createTreeWalker(sec, NodeFilter.SHOW_TEXT, {
+          acceptNode: node => {
+            if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+            const tag = node.parentNode.tagName;
+            if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'OPTION') return NodeFilter.FILTER_REJECT;
+            return regex.test(node.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+          }
+        });
+        const nodes = [];
+        let n;
+        while ((n = walker.nextNode())) nodes.push(n);
+        nodes.forEach(textNode => {
+          const frag = document.createDocumentFragment();
+          let lastIdx = 0;
+          const str = textNode.nodeValue;
+          regex.lastIndex = 0;
+          let m;
+          while ((m = regex.exec(str)) !== null) {
+            if (m.index > lastIdx) frag.appendChild(document.createTextNode(str.slice(lastIdx, m.index)));
+            const mark = document.createElement('mark');
+            mark.className = 'hl';
+            mark.textContent = m[0];
+            frag.appendChild(mark);
+            if (!firstMark) firstMark = mark;
+            secMatches++;
+            totalMatches++;
+            lastIdx = m.index + m[0].length;
+          }
+          if (lastIdx < str.length) frag.appendChild(document.createTextNode(str.slice(lastIdx)));
+          textNode.parentNode.replaceChild(frag, textNode);
+        });
+        sec.style.display = secMatches > 0 ? '' : 'none';
+      });
+
+      searchCount.textContent = totalMatches > 0 ? `${totalMatches} 筆符合` : '無符合結果';
+      if (firstMark) firstMark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    let debounce;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(performSearch, 200);
+    });
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      performSearch();
+      searchInput.focus();
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === '/' && document.activeElement !== searchInput && document.activeElement !== geneSearch) {
+        e.preventDefault();
+        searchInput.focus();
+      }
+    });
+  </script>
+</body>
+</html>
